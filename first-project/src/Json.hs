@@ -30,4 +30,13 @@ import Numeric
 --   let ((d, _):_) = readHex [a,b]
 --   return . toEnum $ d
 
+data JValue = JString String
+            | JNumber Double
+            | JBool Bool
+            | JNull
+            | JObject [(String, JValue)]
+            | JArray [JValue]
+              deriving (Eq, Ord, Show)
+
+
 jsonFile:: CharParser () [(String, Maybe String)]
